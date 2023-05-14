@@ -95,14 +95,13 @@ public class CustomMerchant {
             public void run() {
                 Merchant.getInstance().getMerchant().getNPC().despawn();
                 Merchant.getInstance().setMerchant(new CustomMerchant());
-                System.out.println("NPC is dead");
             }
         }.runTaskLater(Merchant.getInstance(), Merchant.getInstance().minutesDead());
 
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(() -> {
+
+        Merchant.getInstance().executor.scheduleAtFixedRate(() -> {
             if (Merchant.getInstance().getMerchant().isDead() || !Merchant.getInstance().getMerchant().isActive()) {
-                executor.shutdownNow();
+                Merchant.getInstance().executor.shutdownNow();
                 return;
             }
 

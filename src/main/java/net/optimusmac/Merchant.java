@@ -129,24 +129,22 @@ public final class Merchant extends JavaPlugin {
 
 
     private void start() {
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(() -> {
-            double randomValue = Math.random() * 100.0;
-            if (merchant.isActive() || Bukkit.getOnlinePlayers().size() == 0) return;
-            if (randomValue <= 70) {
-                new BukkitRunnable() {
-                    public void run() {
-                        Merchant.getInstance().getMerchant().setActive(true);
-                        TeleportUtils teleportUtils = new TeleportUtils();
-                        teleportUtils.safeTeleport(worldName);
-                        merchant.startDead();
-                        cancel();
-                    }
-                }.runTask(this);
-            } else {
-                Bukkit.getLogger().info("Next chance: " + randomValue);
+        new BukkitRunnable() {
+
+
+            @Override
+            public void run() {
+                double randomValue = Math.random() * 100.0;
+                if (merchant.isActive() || Bukkit.getOnlinePlayers().size() == 0) return;
+                if (randomValue <= chanceSpawn) {
+                    Merchant.getInstance().getMerchant().setActive(true);
+                    TeleportUtils teleportUtils = new TeleportUtils();
+                    teleportUtils.safeTeleport(worldName);
+                    merchant.startDead();
+                }
             }
-        }, 0, 1000, TimeUnit.MILLISECONDS);
+        }.runTaskTimer(this, 0L, 20L);
+
     }
 
 

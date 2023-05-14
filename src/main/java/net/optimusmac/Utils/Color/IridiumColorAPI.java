@@ -20,30 +20,13 @@ import java.util.stream.Collectors;
 
 public class IridiumColorAPI {
 
-    /**
-     * The current version of the server in the a form of a major version.
-     * If the static initialization for this fails, you know something's wrong with
-     * the server software.
-     *
-     * @since 1.0.0
-     */
     private static final int VERSION = getVersion();
 
-    /**
-     * Cached result if the server version is after the v1.16 RGB update.
-     *
-     * @since 1.0.0
-     */
     private static final boolean SUPPORTS_RGB = VERSION >= 16;
 
     private static final List<String> SPECIAL_COLORS = Arrays.asList("&l", "&n", "&o", "&k", "&m", "§l", "§n", "§o", "§k", "§m");
 
-    /**
-     * Cached result of all legacy colors.
-     *
-     * @since 1.0.0
-     */
-    private static final Map<Color, ChatColor> COLORS = ImmutableMap.<Color, ChatColor>builder()
+        private static final Map<Color, ChatColor> COLORS = ImmutableMap.<Color, ChatColor>builder()
             .put(new Color(0), ChatColor.getByChar('0'))
             .put(new Color(170), ChatColor.getByChar('1'))
             .put(new Color(43520), ChatColor.getByChar('2'))
