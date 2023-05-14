@@ -1,0 +1,11 @@
+SettingsNPC:
+  allMessage: '&cВнимание! &7На координатах &cX%s&7, &cY%s&7, &cZ%s &7появился %s!'
+  messageDepositMoney: '&7Вы получили %s монет за %s штук сокровищ'
+  chanceSpawnPerSecond: 0.2
+  onlyWorld: world
+  minutesFromDead: 20
+  itemBounty:
+    material: gold_ingot
+  givePerSecondBountyItem: 30
+  pricePerBounty: 1000 #this will be multiplied by the number of rewards every 10 seconds
+  worldBorder: 5000

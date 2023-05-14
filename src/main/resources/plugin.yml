@@ -1,0 +1,8 @@
+name: ItinerantMerchant
+version: '${project.version}'
+main: net.optimusmac.Merchant
+authors: [ OptimusMac ]
+depend:
+  - Citizens
+description: Merchant
+
